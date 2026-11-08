@@ -109,7 +109,7 @@ main :: proc()
     assert(hwnd != nil)    
 
     win.SetThreadExecutionState(
-        win.ES_SYSTEM_REQUIRED | win.ES_DISPLAY_REQUIRED | win.ES_CONTINUOUS)
+        {.System_Required, .Display_Required, .Continuous})
     iconDataPtr := showTrayApplet(hinst, hwnd)
     defer free(iconDataPtr)
     win.SetWindowLongPtrW(hwnd, win.GWLP_USERDATA, int(uintptr(iconDataPtr)))
